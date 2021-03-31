@@ -34,7 +34,9 @@ class UsersController extends Controller
         $user->officer_name = $request->officer_name;
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        if ($request->get('password') != '') {
+            $user->password = Hash::make($request->password);
+        }
         $user->phone_number = $request->phone_number;
         $user->level_id = $request->level_id;
         $user->save();

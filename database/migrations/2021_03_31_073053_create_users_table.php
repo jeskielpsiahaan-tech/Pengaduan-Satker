@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('phone_number');
+            $table->string('photo')->nullable();
             $table->unsignedBigInteger('level_id')->nullable();
             $table->foreign('level_id')->references('id')->on('level')->onDelete('cascade');
             $table->rememberToken();

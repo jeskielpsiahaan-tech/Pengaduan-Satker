@@ -71,7 +71,9 @@ class SocietyController extends Controller
         $society->name = $request->name;
         $society->phone_number = $request->phone_number;
         $society->address = $request->address;
-        $society->password = Hash::make($request->password);
+        if ($request->get('password') != '') {
+            $society->password = Hash::make($request->password);
+        }
         $result = $society->save();
         if ($result) {
             return redirect()->route('society.index')->with(['success' => 'Society has been updated']);
