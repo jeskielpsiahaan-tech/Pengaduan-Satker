@@ -182,10 +182,81 @@
             </div>
 
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <h4 class="card-title">Annual Complaint Graph</h4>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <canvas class="embed-responsive-item" id="myChartt"></canvas>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 </div>
+<?php
+foreach ($tahun as $row) {
+    $th[] = $row->Tahun;
+    $complaint1[] = $row->pay_total;
+    }    
+?>
+
 @endsection
 @push('script')
+<script src="{{asset('assets/libs/select2/js/select2.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('assets/libs/spectrum-colorpicker2/spectrum.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
+<script src="{{asset('assets/libs/%40chenfengyuan/datepicker/datepicker.min.js')}}"></script>
+<script src="{{asset('assets/js/pages/form-advanced.init.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"> </script>
+<script>
+     var ctx = document.getElementById('myChartt').getContext('2d');
+      var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+
+          labels: <?php echo json_encode($th)?>,
+          datasets: [{
+              label: 'Total Complaint',
+              data: <?php echo json_encode($complaint1)?>,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+</script>
+
 
 @endpush

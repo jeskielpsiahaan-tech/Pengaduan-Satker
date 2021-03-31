@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
@@ -49,6 +50,18 @@ Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], fun
     Route::get('society/delete/{id}', [SocietyController::class, 'destroy']);
     Route::get('society/edit/{id}', [SocietyController::class, 'edit']);
     Route::post('society/update/{id}', [SocietyController::class, 'update']);
+    Route::resource('complaints', ComplaintController::class);
+    Route::get('complaints/{id}', [ComplaintController::class, 'detail']);
+    Route::get('complaints/show/{id}', [ResponseController::class, 'show']);
+    Route::post('complaints/save/{id}', [ResponseController::class, 'save']);
+
+    Route::get('report/day', [ReportController::class, 'day']);
+    Route::get('report/day/search', [ReportController::class, 'day_search']);
+    Route::get('report/day/cetakpdf', [ReportController::class, 'day_pdf']);
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:1,2'], 'prefix' => 'admin'], function () {
+    Route::resource('dashboard', DashboardController::class);
     Route::resource('complaints', ComplaintController::class);
     Route::get('complaints/{id}', [ComplaintController::class, 'detail']);
     Route::get('complaints/show/{id}', [ResponseController::class, 'show']);

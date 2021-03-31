@@ -45,12 +45,14 @@
                                     <span key="t-transactions">Complaints</span>
                                 </a>
                             </li>
+                            @if(Auth::user()->level_id == '1')
                             <li>
                                 <a href="{{route('society.index')}}" class="waves-effect">
                                     <i class="bx bxs-user-badge"></i>
                                     <span key="t-transactions">Society</span>
                                 </a>
                             </li>
+                            
                             <li class="menu-title" key="t-menu">Administrator</li>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -63,16 +65,12 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <a href="{{url('admin/report/day')}}" class="waves-effect">
                                     <i class="bx bx-tone"></i>
-                                    <span key="t-crypto">Report</span>
+                                    <span key="t-transactions">Report</span>
                                 </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{url('admin/report/day')}}" key="t-wallet">Day</a></li>
-                                    <li><a href="{{url('admin/report/month')}}" key="t-buy">Month</a></li>
-                                    <li><a href="{{url('admin/report/year')}}" key="t-buy">Year</a></li>
-                                </ul>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

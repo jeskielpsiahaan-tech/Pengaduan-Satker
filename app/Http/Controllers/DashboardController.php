@@ -6,6 +6,7 @@ use App\Models\Complaint;
 use App\Models\Society;
 use Illuminate\Http\Request;
 use App\Models\User;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -17,7 +18,12 @@ class DashboardController extends Controller
         $data['finished'] = Complaint::where('status', 'finished')->count();
         $data['users'] = User::all()->count();
         $data['society'] = Society::all()->count();
-
+        $data['tahun'] = DB::table("complaint")->select(DB::raw('EXTRACT(YEAR FROM date_complaint) AS Tahun, COUNT(id) as pay_total'))
+            ->groupBy(DB::raw('EXTRACT(YEAR FROM date_complaint)'))
+            ->get();
+        // $data['tanggal'] = DB::table("complaint")->select(DB::raw('EXTRACT(DATE FROM date_complaint) AS Date, COUNT(id) as pay_total'))
+        //     ->groupBy(DB::raw('EXTRACT(DATE FROM date_complaint)'))
+        //     ->get();
 
         return view('admin.dashboards.index', $data);
     }
