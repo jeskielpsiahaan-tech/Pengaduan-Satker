@@ -51,9 +51,9 @@
                                     <td><img src="{{url('avatar_complaint/',$row->photo)}}" width="120px"></td>
                                     <td>{{date('d F Y H:i:s',strtotime($row->created_at))}}</td>
                                     @if ($row->status == '0')
-                                        <td><span class="badge rounded-pill bg-danger">Belum Di Proses</span></td>
+                                        <td><span class="badge rounded-pill bg-danger">Unprocess</span></td>
                                     @elseif($row->status == "process")
-                                        <td><span class="badge rounded-pill bg-primary">Sedang Di Proses</span></td>
+                                        <td><span class="badge rounded-pill bg-primary">Process</span></td>
                                     @else 
                                         <td><span class="badge rounded-pill bg-success">Finished</span></td>
                                     @endif

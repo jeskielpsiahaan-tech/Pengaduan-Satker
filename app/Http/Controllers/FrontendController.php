@@ -82,9 +82,13 @@ class FrontendController extends Controller
 
     public function home()
     {
-        $nik = Session::get('nik');
-        $data['count_complaint'] = Complaint::where('nik', $nik)->count();
-        return view('frontend.complaint.index', $data);
+        if (Session::get('nik') != NULL) {
+            $nik = Session::get('nik');
+            $data['count_complaint'] = Complaint::where('nik', $nik)->count();
+            return view('frontend.complaint.index', $data);
+        } else {
+            return redirect('/');
+        }
     }
 
     public function logout()
@@ -94,7 +98,12 @@ class FrontendController extends Controller
     }
     public function add_complaint()
     {
-        return view('frontend.complaint.add');
+        if (Session::get('nik') != NULL) {
+            # code...
+            return view('frontend.complaint.add');
+        } else {
+            return redirect('/');
+        }
     }
 
     public function save_complaint(Request $request)
@@ -128,14 +137,23 @@ class FrontendController extends Controller
     }
     public function complaint()
     {
-        $nik = Session::get('nik');
-        $data['complaint'] = Complaint::where('nik', $nik)->get();
-        return view('frontend.complaint.index1', $data);
+        if (Session::get('nik') != NULL) {
+            # code...
+            $nik = Session::get('nik');
+            $data['complaint'] = Complaint::where('nik', $nik)->get();
+            return view('frontend.complaint.index1', $data);
+        } else {
+            return redirect('/');
+        }
     }
     public function detail_complaint($id)
     {
-
-        $data['complaint'] = Complaint::findOrFail($id);
-        return view('frontend.complaint.detail', $data);
+        if (Session::get('nik') != NULL) {
+            # code...
+            $data['complaint'] = Complaint::findOrFail($id);
+            return view('frontend.complaint.detail', $data);
+        } else {
+            return redirect('/');
+        }
     }
 }

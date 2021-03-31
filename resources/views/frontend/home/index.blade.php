@@ -52,8 +52,11 @@
         <ul>
           <li class="active"><a href="{{url('/')}}">Home</a></li>
           <li><a href="#procedures">Procedures</a></li>
+          @if(Session::get('nik') == NULL)
           <li><a href="{{url('user/login')}}">Login</a></li>
           <li><a href="{{url('user/register')}}">Register</a></li>
+          @endif
+          
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -67,9 +70,11 @@
       <h1><span>Online Public Complaint Service</spa>
       </h1>
       <h2>Drop your problem report here, we'll process it quickly.</h2>
+      @if(Session::get('nik') != NULL)
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Report</a>
+        <a href="{{url('user/complaint/add')}}" class="btn-get-started scrollto">Report</a>
       </div>
+      @endif
     </div>
   </section><!-- End Hero -->
 

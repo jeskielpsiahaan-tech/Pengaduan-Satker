@@ -74,8 +74,8 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <p class="text-muted fw-medium">Outlet</p>
-                                        <h4 class="mb-0">6</h4>
+                                        <p class="text-muted fw-medium">Complaints</p>
+                                        <h4 class="mb-0">{{$complaints}}</h4>
                                     </div>
 
                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
@@ -92,8 +92,8 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <p class="text-muted fw-medium">Member</p>
-                                        <h4 class="mb-0">9</h4>
+                                        <p class="text-muted fw-medium">Unprocessed</p>
+                                        <h4 class="mb-0">{{$unprocessed}}</h4>
                                     </div>
 
                                     <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -110,8 +110,8 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <p class="text-muted fw-medium">Paket</p>
-                                        <h4 class="mb-0">10</h4>
+                                        <p class="text-muted fw-medium">Process</p>
+                                        <h4 class="mb-0">{{$process}}</h4>
                                     </div>
 
                                     <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -128,13 +128,49 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <p class="text-muted fw-medium">Transaction</p>
-                                        <h4 class="mb-0">12</h4>
+                                        <p class="text-muted fw-medium">Finished</p>
+                                        <h4 class="mb-0">{{$finished}}</h4>
                                     </div>
 
                                     <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
                                         <span class="avatar-title rounded-circle bg-primary">
                                             <i class="bx bx-cart font-size-24"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mini-stats-wid">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <p class="text-muted fw-medium">Users</p>
+                                        <h4 class="mb-0">{{$users}}</h4>
+                                    </div>
+
+                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                                        <span class="avatar-title rounded-circle bg-primary">
+                                            <i class="bx bx-user-voice font-size-24"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mini-stats-wid">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <p class="text-muted fw-medium">Society</p>
+                                        <h4 class="mb-0">{{$society}}</h4>
+                                    </div>
+
+                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                                        <span class="avatar-title rounded-circle bg-primary">
+                                            <i class="bx bx-user-voice font-size-24"></i>
                                         </span>
                                     </div>
                                 </div>
