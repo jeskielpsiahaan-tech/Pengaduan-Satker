@@ -46,9 +46,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/logactivity')}}" class="waves-effect">
+                                <a href="{{route('society.index')}}" class="waves-effect">
                                     <i class="bx bxs-user-badge"></i>
-                                    <span key="t-transactions">Masyarakat</span>
+                                    <span key="t-transactions">Society</span>
                                 </a>
                             </li>
                             <li>
