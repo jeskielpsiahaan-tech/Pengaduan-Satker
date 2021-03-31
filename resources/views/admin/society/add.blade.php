@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-12">
                 
-                <a href="{{route('society.index')}}" class="button"><i class="bx bx-arrow-back label-icon"></i> &nbsp;&nbsp;Back To List User</a>
+                <a href="{{route('society.index')}}" class="button"><i class="bx bx-arrow-back label-icon"></i> &nbsp;&nbsp;Back To List Society</a>
                 <br>
                 <br>
                 @if ($errors->any())
@@ -64,6 +64,12 @@
                                         <label for="username" class="col-md-2 col-form-label">Username</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="username" name="username" value="{{old('username')}}">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="name" class="col-md-2 col-form-label">Name</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" id="name" name="name" value="{{old('name')}}">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">

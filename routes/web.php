@@ -32,5 +32,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], fun
     Route::get('users/edit/{id}', [UsersController::class, 'edit']);
     Route::post('users/update/{id}', [UsersController::class, 'update']);
     Route::resource('society', SocietyController::class);
+    Route::get('society/delete/{id}', [SocietyController::class, 'destroy']);
+    Route::get('society/edit/{id}', [SocietyController::class, 'edit']);
+    Route::post('society/update/{id}', [SocietyController::class, 'update']);
 });
 Route::get('/home', 'HomeController@index')->name('home');

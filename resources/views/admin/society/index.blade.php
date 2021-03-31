@@ -48,7 +48,7 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nik</th>
+                                <th>NIK</th>
                                 <th>Username</th>
                                 <th>Phone Number</th>
                                 <th>Address</th>

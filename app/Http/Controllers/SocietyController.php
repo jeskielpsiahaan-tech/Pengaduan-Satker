@@ -24,6 +24,7 @@ class SocietyController extends Controller
         $this->validate($request, [
             'nik' => 'required|min:2|max:20',
             'username' => 'required|min:2|max:20',
+            'name' => 'required|min:2|max:20',
             'password' => 'required|min:5|max:20',
             'phone_number' => 'required',
             'address' => 'required',
@@ -31,6 +32,7 @@ class SocietyController extends Controller
         $society = new Society;
         $society->nik = $request->nik;
         $society->username = $request->username;
+        $society->name = $request->name;
         $society->phone_number = $request->phone_number;
         $society->address = $request->address;
         $society->password = Hash::make($request->password);
@@ -40,5 +42,17 @@ class SocietyController extends Controller
         } else {
             return redirect()->route('society.index')->with(['success' => 'User has been saved']);
         };
+    }
+    public function destroy($id)
+    {
+        $society = Society::findOrFail($id);
+        $society->delete();
+        return redirect()->back()->with(['success' => 'Society has been deleted']);
+    }
+
+    public function edit($id)
+    {
+        $data['society'] = Society::findOrFail($id);
+        return view('admin.society.edit', $data);
     }
 }
