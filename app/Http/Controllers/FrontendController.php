@@ -90,4 +90,8 @@ class FrontendController extends Controller
         Session::flush();
         return redirect('/');
     }
+    public function add_complaint()
+    {
+        return view('frontend.complaint.add');
+    }
 }

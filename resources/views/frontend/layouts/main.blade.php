@@ -135,7 +135,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
-                                        <a href="" class="dropdown-item" key="t-calendar">Add Complaints</a>
+                                        <a href="{{route('add_complaint')}}" class="dropdown-item" key="t-calendar">Add Complaints</a>
 
                                     </div>
                                 </li>

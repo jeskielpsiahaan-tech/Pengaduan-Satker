@@ -31,6 +31,8 @@ Route::get('user/logout', [FrontendController::class, 'logout'])->name('user_log
 
 Route::get('admin/login', [LoginController::class, 'showFormLogin'])->name('login');
 Route::get('user/home', [FrontendController::class, 'home'])->name('user_home');
+Route::get('user/complaint/add', [FrontendController::class, 'add_complaint'])->name('add_complaint');
+
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logoutt');
 Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], function () {
