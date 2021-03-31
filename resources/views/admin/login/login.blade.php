@@ -4,7 +4,7 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>Login | Aplikasi Pengaduan Masyarakat</title>
+        <title>Login | Public Complaints</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" />
         <meta name="author" />

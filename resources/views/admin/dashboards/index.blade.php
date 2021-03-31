@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Dashboard | Aplikasi Pengaduan Masyarakat')
+@section('title','Dashboard | Public Complaints')
 @section('content')
 <div class="page-content">
     <div class="container-fluid">
@@ -32,7 +32,7 @@
                             <div class="col-7">
                                 <div class="text-primary p-3">
                                     <h5 class="text-primary">Welcome Back !</h5>
-                                    <p>Laundry Application</p>
+                                    <p>Public Complaints</p>
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">

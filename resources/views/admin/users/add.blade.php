@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Management User | Laundry Application')
+@section('title','Management User | Public Complaints')
 @section('css')
 
 @endsection

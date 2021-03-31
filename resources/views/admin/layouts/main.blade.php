@@ -42,7 +42,7 @@
                             <li>
                                 <a href="{{url('admin/logactivity')}}" class="waves-effect">
                                     <i class="bx bx-volume-low"></i>
-                                    <span key="t-transactions">Pengaduan</span>
+                                    <span key="t-transactions">Complaints</span>
                                 </a>
                             </li>
                             <li>

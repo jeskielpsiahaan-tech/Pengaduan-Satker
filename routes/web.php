@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,6 @@ Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], fun
     Route::get('users/delete/{id}', [UsersController::class, 'destroy']);
     Route::get('users/edit/{id}', [UsersController::class, 'edit']);
     Route::post('users/update/{id}', [UsersController::class, 'update']);
+    Route::resource('society', SocietyController::class);
 });
 Route::get('/home', 'HomeController@index')->name('home');
