@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Complaint;
 use App\Models\Society;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -68,12 +69,25 @@ class FrontendController extends Controller
                 Session::put('photo', $society->photo);
                 Session::put('phone_number', $society->phone_number);
                 Session::put('address', $society->address);
-                return redirect()->back();
+                return redirect()->route('user_home');
             } else {
                 return redirect()->back()->with(['error' => 'Invalid nik or password']);
             }
         } else {
             return redirect()->back()->with(['error' => 'Invalid nik or password']);
         }
+    }
+
+    public function home()
+    {
+        $nik = Session::get('nik');
+        $data['count_complaint'] = Complaint::where('nik', $nik)->count();
+        return view('frontend.complaint.index', $data);
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        return redirect('/');
     }
 }

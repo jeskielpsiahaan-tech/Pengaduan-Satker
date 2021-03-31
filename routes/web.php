@@ -27,7 +27,10 @@ Route::get('user/register', [FrontendController::class, 'register'])->name('user
 Route::post('user/register/save', [FrontendController::class, 'save']);
 Route::get('user/login', [FrontendController::class, 'login'])->name('user_login');
 Route::post('user/login/cek', [FrontendController::class, 'postlogin'])->name('postlogin');
+Route::get('user/logout', [FrontendController::class, 'logout'])->name('user_logout');
+
 Route::get('admin/login', [LoginController::class, 'showFormLogin'])->name('login');
+Route::get('user/home', [FrontendController::class, 'home'])->name('user_home');
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logoutt');
 Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], function () {
