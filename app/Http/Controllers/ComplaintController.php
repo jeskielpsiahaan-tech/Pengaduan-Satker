@@ -12,4 +12,10 @@ class ComplaintController extends Controller
         $data['complaints'] = Complaint::all();
         return view('admin.complaints.index', $data);
     }
+    public function show($id)
+    {
+        $data['complaint'] = Complaint::findOrFail($id);
+        $data['response']
+        return view('admin.complaints.show', $data);
+    }
 }

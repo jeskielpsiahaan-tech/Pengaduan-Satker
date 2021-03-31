@@ -57,12 +57,18 @@
                                 @foreach ($complaints as $row)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$row->photo}}</td>
-                                    <td></td>
-                                    <td>{{$row->date_complaint}}</td>
-                                    <td>{{$row->status}}</td>
+                                    <td><img src="{{url('avatar_complaint/',$row->photo)}}" width="100px"></td>
+                                    <td>{{$row->Society->name}}</td>
+                                    <td>{{date('d F Y H:i:s',strtotime($row->created_at))}}</td>
+                                    @if ($row->status == 0)
+                                        <td><span class="badge rounded-pill bg-danger">Belum Di Proses</span></td>
+                                    @elseif($row->status == "process")
+                                        <td><span class="badge rounded-pill bg-primary">Sedang Di Proses</span></td>
+                                    @else 
+                                        <td><span class="badge rounded-pill bg-success">Finished</span></td>
+                                    @endif
                                     <td>
-                                        <a href="{{url('admin/complaints/edit/'.$row->id)}}" class="btn btn-danger btn-rounded waves-effect waves-light">
+                                        <a href="{{url('admin/complaints/'.$row->id)}}" class="btn btn-danger btn-rounded waves-effect waves-light">
                                             <i class="bx bx-edit font-size-16 align-middle"></i>
                                         </a>
                                         <a href="javascript: void(0);" class="btn btn-warning btn-rounded waves-effect waves-light btn-delete" title="Delete Data" society-id="{{$row->id}}">
