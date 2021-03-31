@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
     @include('admin.partials.head')
+    
     <body data-sidebar="colored">
         <div id="layout-wrapper">
             @include('admin.partials.header')

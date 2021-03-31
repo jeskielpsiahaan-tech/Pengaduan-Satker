@@ -27,5 +27,8 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logoutt');
 Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], function () {
     Route::resource('dashboard', DashboardController::class);
     Route::resource('users', UsersController::class);
+    Route::get('users/delete/{id}', [UsersController::class, 'destroy']);
+    Route::get('users/edit/{id}', [UsersController::class, 'edit']);
+    Route::post('users/update/{id}', [UsersController::class, 'update']);
 });
 Route::get('/home', 'HomeController@index')->name('home');
