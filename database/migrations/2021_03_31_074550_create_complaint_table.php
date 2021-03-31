@@ -21,7 +21,7 @@ class CreateComplaintTable extends Migration
             $table->string('photo');
             $table->enum('status', ['0', 'process', 'finished']);
             $table->unsignedBigInteger('society_id')->nullable();
-            $table->foreign('society_id')->references('id')->on('society')->onDelete('restrict');
+            $table->foreign('society_id')->references('id')->on('society')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -48,6 +48,7 @@
                             <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Photo</th>
                                 <th>Officer Name</th>
                                 <th>Email</th>
                                 <th>Username</th>
@@ -62,6 +63,11 @@
                                 @foreach ($users as $row)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
+                                    @if ($row->photo == NULL)
+                                    <td><span class="badge rounded-pill bg-danger">Emtpy</span></td>
+                                    @else
+                                    <td><img class="rounded-circle avatar-xs" src="{{ url('/avatar/'.$row->photo) }}"></td>
+                                    @endif
                                     <td>{{$row->officer_name}}</td>
                                     <td>{{$row->email}}</td>
                                     <td>{{$row->username}}</td>

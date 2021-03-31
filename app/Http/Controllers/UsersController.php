@@ -6,6 +6,8 @@ use App\Models\Level;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use File;
 
 class UsersController extends Controller
 {
@@ -29,14 +31,18 @@ class UsersController extends Controller
             'password' => 'required|min:5|max:20',
             'phone_number' => 'required',
             'level_id' => 'required',
+            'photo' => 'required',
         ]);
         $user = new User;
         $user->officer_name = $request->officer_name;
         $user->username = $request->username;
         $user->email = $request->email;
-        if ($request->get('password') != '') {
-            $user->password = Hash::make($request->password);
-        }
+        $user->password = Hash::make($request->password);
+        $photo = $request->file('photo');
+        $tujuan_upload = 'avatar';
+        $photo_name = time() . "_" . $photo->getClientOriginalName();
+        $photo->move($tujuan_upload, $photo_name);
+        $user->photo = $photo_name;
         $user->phone_number = $request->phone_number;
         $user->level_id = $request->level_id;
         $user->save();
@@ -74,7 +80,17 @@ class UsersController extends Controller
         $user->officer_name = $request->officer_name;
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        if ($request->get('password') != '') {
+            $user->password = Hash::make($request->password);
+        }
+        if ($request->file('photo') != '') {
+            File::delete('avatar/' . $user->photo);
+            $photo = $request->file('photo');
+            $tujuan_upload = 'avatar';
+            $photo_name = time() . "_" . $photo->getClientOriginalName();
+            $photo->move($tujuan_upload, $photo_name);
+            $user->photo = $photo_name;
+        }
         $user->phone_number = $request->phone_number;
         $user->level_id = $request->level_id;
         $result = $user->save();

@@ -79,6 +79,12 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
+                                        <label for="photo" class="col-md-2 col-form-label">Photo</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="file" id="photo" name="photo">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
                                         <label for="level_id" class="col-md-2 col-form-label">Privilege</label>
                                         <div class="col-md-10">
                                             <select class="form-select select2" id="level_id" name="level_id">
