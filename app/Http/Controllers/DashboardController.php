@@ -10,4 +10,8 @@ class DashboardController extends Controller
     {
         return view('admin.dashboards.index');
     }
+    public function welcome()
+    {
+        return view('frontend.home.index');
+    }
 }

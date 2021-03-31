@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -18,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.login.login');
-});
+
 
 // Auth::routes();
+Route::get('/', [DashboardController::class, 'welcome']);
+Route::get('user/register', [FrontendController::class, 'register']);
 Route::get('admin/login', [LoginController::class, 'showFormLogin'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logoutt');
