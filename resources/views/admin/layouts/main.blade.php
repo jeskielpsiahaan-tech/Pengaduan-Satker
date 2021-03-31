@@ -3,14 +3,14 @@
 <html lang="en">
     @include('admin.partials.head')
     
-    <body data-sidebar="colored">
+    <body data-sidebar="dark">
         <div id="layout-wrapper">
             @include('admin.partials.header')
             <div class="vertical-menu">
                 <div data-simplebar class="h-100">
                     <div id="sidebar-menu">
                         <ul class="metismenu list-unstyled" id="side-menu">
-                            <li class="menu-title" key="t-menu">Menu</li>
+                            <li class="menu-title" key="t-menu">Main Menu</li>
                             <li>
                                 <a href="{{route('dashboard.index')}}" class="waves-effect">
                                     <i class="bx bx-home-circle"></i>
@@ -51,6 +51,7 @@
                                     <span key="t-transactions">Society</span>
                                 </a>
                             </li>
+                            <li class="menu-title" key="t-menu">Administrator</li>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="bx bxs-user-detail"></i>

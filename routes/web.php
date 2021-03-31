@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
@@ -35,5 +36,6 @@ Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], fun
     Route::get('society/delete/{id}', [SocietyController::class, 'destroy']);
     Route::get('society/edit/{id}', [SocietyController::class, 'edit']);
     Route::post('society/update/{id}', [SocietyController::class, 'update']);
+    Route::resource('complaints', ComplaintController::class);
 });
 Route::get('/home', 'HomeController@index')->name('home');

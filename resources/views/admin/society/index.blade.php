@@ -25,7 +25,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <a href="{{route('society.create')}}" class="btn btn-success waves-effect btn-label waves-light"><i class="bx bxs-plus-square label-icon"></i> Add</a>
+                <a href="{{route('society.create')}}" class="btn btn-success waves-effect waves-light"> Add</a>
             </div>
         </div>
         <br>
