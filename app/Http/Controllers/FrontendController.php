@@ -18,11 +18,11 @@ class FrontendController extends Controller
         $this->validate($request, [
             'nik' => 'required|min:2|max:20',
             'name' => 'required|min:2|max:20',
-            'username' => 'required|email|unique:users',
-            'password' => 'required|min:5|max:20',
+            'username' => 'required',
             'phone_number' => 'required',
-            'level_id' => 'required',
+            'address' => 'required',
             'photo' => 'required',
+            'password' => 'required|min:6|max:20',
         ]);
         $society = new Society;
         $society->nik = $request->nik;
@@ -32,6 +32,5 @@ class FrontendController extends Controller
         $society->address = $request->address;
         $society->photo = $request->photo;
         $society->password = Hash::make($request->password);
-        dd($society);
     }
 }

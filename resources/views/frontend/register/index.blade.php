@@ -112,6 +112,12 @@
                                         <div class="mt-3 d-grid">
                                             <button class="btn btn-primary waves-effect waves-light" type="submit">Register</button>
                                         </div>
+                                        <div class="mt-4 text-center">
+                                            <p class="mb-0">By registering you agree to the Skote <a href="#" class="text-primary">Terms of Use</a></p>
+                                            <br>
+                                            <p>Already have an account ? <a href="{{url('user/login')}}" class="fw-medium text-primary"> Login</a> </p>
+                                        
+                                        </div>
                                     </form>
                                 </div>
             
