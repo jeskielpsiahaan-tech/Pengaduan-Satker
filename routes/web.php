@@ -32,8 +32,12 @@ Route::get('user/logout', [FrontendController::class, 'logout'])->name('user_log
 Route::get('admin/login', [LoginController::class, 'showFormLogin'])->name('login');
 Route::get('user/home', [FrontendController::class, 'home'])->name('user_home');
 Route::get('user/complaint/add', [FrontendController::class, 'add_complaint'])->name('add_complaint');
+Route::post('user/complaint/save', [FrontendController::class, 'save_complaint'])->name('save_complaint');
+Route::get('user/complaint', [FrontendController::class, 'complaint'])->name('complaint');
+Route::get('user/complaint/detail/{id}', [FrontendController::class, 'detail_complaint'])->name('detail_complaint');
 
-Route::post('login', [LoginController::class, 'login']);
+
+Route::post('admin/login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logoutt');
 Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], function () {
     Route::resource('dashboard', DashboardController::class);

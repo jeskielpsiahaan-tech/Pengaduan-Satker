@@ -12,4 +12,9 @@ class Complaint extends Model
     protected $table = 'complaint';
     protected $primaryKey = 'id';
     protected $guarded = [];
+
+    public function Society()
+    {
+        return $this->belongsTo(Society::class, 'society_id', 'id');
+    }
 }

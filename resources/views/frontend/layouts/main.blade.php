@@ -11,6 +11,7 @@
         <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        @yield('css')
     </head>
     <body data-topbar="dark" data-layout="horizontal">
         <div id="layout-wrapper">
@@ -124,7 +125,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
-                                        <a href="" class="dropdown-item" key="t-calendar">List Complaints</a>
+                                        <a href="{{route('complaint')}}" class="dropdown-item" key="t-calendar">List Complaints</a>
 
                                     </div>
                                 </li>
@@ -175,4 +176,5 @@
         <script src="{{asset('assets/js/pages/dashboard.init.js')}}"></script>
         <script src="{{asset('assets/js/app.js')}}"></script>
     </body>
+    @stack('script')
 </html>
