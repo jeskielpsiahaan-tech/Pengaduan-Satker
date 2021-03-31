@@ -107,7 +107,7 @@
                                                 <tr>
                                                     <td>Respon</td>
                                                     <td>
-                                                        <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$complaint->contents_of_the_report}}</a>
+                                                        <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$complaint->Response->response}}</a>
                                                     </td>
                                                 </tr>
                                                

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complaint;
+use App\Models\Response;
 use App\Models\Society;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -105,6 +106,7 @@ class FrontendController extends Controller
         $nik = Session::get('nik');
         $society = Session::get('society_id');
         $complaint = new Complaint;
+
         $complaint->contents_of_the_report = $request->contents_of_the_report;
         $photo = $request->file('photo');
         $tujuan_upload = 'avatar_complaint';
@@ -115,12 +117,14 @@ class FrontendController extends Controller
         $complaint->date_complaint = Date::now()->format('Y-m-d');
         $complaint->nik = $nik;
         $complaint->society_id = $society;
-        $result = $complaint->save();
-        if ($result) {
-            return redirect()->back()->with(['success' => 'Complaint has been saved !']);
-        } else {
-            return redirect()->back()->with(['success' => 'Complaint Data Failed Saved']);
-        };
+        $complaint->save();
+        $complaint_id = $complaint->id;
+
+        $response = new Response;
+        $response->complaint_id = $complaint_id;
+        $response->save();
+
+        return redirect()->back()->with(['success' => 'Complaint has been saved !']);
     }
     public function complaint()
     {
