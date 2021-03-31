@@ -40,7 +40,7 @@
                                 </ul>
                             </li> --}}
                             <li>
-                                <a href="{{url('admin/logactivity')}}" class="waves-effect">
+                                <a href="{{route('complaints.index')}}" class="waves-effect">
                                     <i class="bx bx-volume-low"></i>
                                     <span key="t-transactions">Complaints</span>
                                 </a>
