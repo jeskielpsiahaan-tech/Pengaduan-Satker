@@ -18,6 +18,7 @@ class CreateSocietyTable extends Migration
             $table->string('nik');
             $table->string('name');
             $table->string('username');
+            $table->string('photo');
             $table->string('password');
             $table->string('phone_number');
             $table->string('address');
