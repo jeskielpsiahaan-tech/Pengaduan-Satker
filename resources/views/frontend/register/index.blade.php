@@ -73,7 +73,7 @@
                                 </div>
                                 @endif
                                 <div class="p-2">
-                                    <form class="form-horizontal" action="{{url('user/register/save')}}" method="POST">
+                                    <form class="form-horizontal" action="{{url('user/register/save')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="nik" class="form-label">NIK</label>

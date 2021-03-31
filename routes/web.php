@@ -23,8 +23,10 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();
 Route::get('/', [DashboardController::class, 'welcome']);
-Route::get('user/register', [FrontendController::class, 'register']);
+Route::get('user/register', [FrontendController::class, 'register'])->name('user_register');
 Route::post('user/register/save', [FrontendController::class, 'save']);
+Route::get('user/login', [FrontendController::class, 'login'])->name('user_login');
+Route::post('user/login/cek', [FrontendController::class, 'postlogin'])->name('postlogin');
 Route::get('admin/login', [LoginController::class, 'showFormLogin'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logoutt');
