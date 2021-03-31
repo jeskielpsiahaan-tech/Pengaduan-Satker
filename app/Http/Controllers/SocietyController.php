@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Society;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use File;
 
 class SocietyController extends Controller
 {
@@ -28,6 +30,7 @@ class SocietyController extends Controller
             'password' => 'required|min:5|max:20',
             'phone_number' => 'required',
             'address' => 'required',
+            'photo' => 'required',
         ]);
         $society = new Society;
         $society->nik = $request->nik;
@@ -36,6 +39,11 @@ class SocietyController extends Controller
         $society->phone_number = $request->phone_number;
         $society->address = $request->address;
         $society->password = Hash::make($request->password);
+        $photo = $request->file('photo');
+        $tujuan_upload = 'avatar_society';
+        $photo_name = time() . "_" . $photo->getClientOriginalName();
+        $photo->move($tujuan_upload, $photo_name);
+        $society->photo = $photo_name;
         $society->save();
         if ($request->submit == "more") {
             return redirect()->route('society.create')->with(['success' => 'User has been saved !']);
@@ -73,6 +81,14 @@ class SocietyController extends Controller
         $society->address = $request->address;
         if ($request->get('password') != '') {
             $society->password = Hash::make($request->password);
+        }
+        if ($request->file('photo') != '') {
+            File::delete('avatar_society/' . $society->photo);
+            $photo = $request->file('photo');
+            $tujuan_upload = 'avatar_society';
+            $photo_name = time() . "_" . $photo->getClientOriginalName();
+            $photo->move($tujuan_upload, $photo_name);
+            $society->photo = $photo_name;
         }
         $result = $society->save();
         if ($result) {
