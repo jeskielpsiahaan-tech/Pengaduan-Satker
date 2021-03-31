@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 // Auth::routes();
 Route::get('/', [DashboardController::class, 'welcome']);
 Route::get('user/register', [FrontendController::class, 'register']);
+Route::post('user/register/save', [FrontendController::class, 'save']);
 Route::get('admin/login', [LoginController::class, 'showFormLogin'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logoutt');
