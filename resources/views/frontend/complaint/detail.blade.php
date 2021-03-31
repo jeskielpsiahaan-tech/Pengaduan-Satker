@@ -83,7 +83,7 @@
                                                 <tr>
                                                     <td>Status</td>
                                                     <td>
-                                                        @if ($complaint->status == 0)
+                                                        @if ($complaint->status == '0')
                                                             <span class="badge rounded-pill bg-danger">Belum Di Proses</span>
                                                         @elseif($complaint->status == "process")
                                                             <span class="badge rounded-pill bg-primary">Sedang Di Proses</span>

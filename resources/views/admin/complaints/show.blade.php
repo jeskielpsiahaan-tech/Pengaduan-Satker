@@ -75,7 +75,7 @@
                                                 <tr>
                                                     <td>Status</td>
                                                     <td>
-                                                        @if ($complaint->status == 0)
+                                                        @if ($complaint->status == '0')
                                                             <span class="badge rounded-pill bg-danger">Belum Di Proses</span>
                                                         @elseif($complaint->status == "process")
                                                             <span class="badge rounded-pill bg-primary">Sedang Di Proses</span>
@@ -99,14 +99,24 @@
                                                 <tr>
                                                     <td>Respon</td>
                                                     <td>
-                                                        <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$complaint->contents_of_the_report}}</a>
+                                                        @if (empty($response->response))
+                                                            <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">Not response yet</a>
+                                                        @else
+                                                            <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$response->response}}</a>
+                                                        @endif
                                                     </td>
                                                 </tr>
-                                               
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <a href="{{url('admin/complaints/show',$complaint->id)}}" class="btn btn-info">Give feedback</a>
+                                                    </td>
+                                                </tr>
                                                 
             
                                                 </tbody>
                                             </table>
+                                            
                                         </div>
                                     
                                     

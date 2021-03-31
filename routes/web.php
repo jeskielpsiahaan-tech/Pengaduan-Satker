@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1'], 'prefix' => 'admin'], fun
     Route::get('society/edit/{id}', [SocietyController::class, 'edit']);
     Route::post('society/update/{id}', [SocietyController::class, 'update']);
     Route::resource('complaints', ComplaintController::class);
-    Route::get('complaints/{id}', [ComplaintController::class, 'show']);
+    Route::get('complaints/{id}', [ComplaintController::class, 'detail']);
+    Route::get('complaints/show/{id}', [ResponseController::class, 'show']);
+    Route::post('complaints/save/{id}', [ResponseController::class, 'save']);
 });
 Route::get('/home', 'HomeController@index')->name('home');
