@@ -9,9 +9,9 @@
         <meta name="description" />
         <meta name="author" />
         <link rel="shortcut icon" href="{{asset('admin/assets/images/favicon.ico')}}">
-        <link href="{{asset('admin/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <link href="{{asset('admin/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('admin/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
     </head>
     <body style="background-color: #43a7f9">
         <div class="account-pages my-5 pt-sm-5">
@@ -28,7 +28,7 @@
                                         </div>
                                     </div>
                                     <div class="col-5 align-self-end">
-                                        <img src="{{asset('admin/assets/images/profile-img.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('assets/images/profile-img.png')}}" alt="" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -116,12 +116,12 @@
                 </div>
             </div>
         </div>
-        <script src="{{asset('admin/assets/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('admin/assets/libs/metismenu/metisMenu.min.js')}}"></script>
-        <script src="{{asset('admin/assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{asset('admin/assets/libs/node-waves/waves.min.js')}}"></script>
-        <script src="{{asset('admin/assets/js/app.js')}}"></script>
+        <script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
+        <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
+        <script src="{{asset('assets/js/app.js')}}"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script>
             $(document).ready(function() {
