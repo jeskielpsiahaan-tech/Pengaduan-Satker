@@ -110,7 +110,7 @@
                                         
                                         
                                         <div class="mt-3 d-grid">
-                                            <button class="btn btn-primary waves-effect waves-light" type="submit">Register</button>
+                                            <button class="btn btn-primary waves-effect waves-light" type="submit">Login</button>
                                         </div>
                                         <div class="mt-4 text-center">
                                             <p class="mb-0">By registering you agree to the Skote <a href="#" class="text-primary">Terms of Use</a></p>
