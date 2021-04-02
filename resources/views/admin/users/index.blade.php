@@ -26,7 +26,6 @@
         <div class="row">
             <div class="col-6">
                 <a href="{{route('users.create')}}" class="btn btn-success waves-effect btn-label waves-light"><i class="bx bxs-plus-square label-icon"></i> Add</a>
-                <button type="button" class="btn btn-danger" id="deleteAllSelectedRecords">Delete Selected</button>
             </div>
             
         </div>
@@ -46,15 +45,9 @@
 
                         
 
-                        <table id="" class="table table-bordered dt-responsive  nowrap w-100">
+                        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                             <thead>
                             <tr>
-                                <th style="width: 20px;">
-                                    <div class="form-check font-size-16 align-middle">
-                                        <input class="form-check-input" type="checkbox" id="chkCheckAll">
-                                        <label class="form-check-label" for="chkCheckAll"></label>
-                                    </div>
-                                </th>
                                 <th>No</th>
                                 <th>Photo</th>
                                 <th>Officer Name</th>
@@ -69,13 +62,7 @@
 
                             <tbody>
                                 @foreach ($users as $row)
-                                <tr id="sid{{$row->id}}">
-                                    <td>
-                                        <div class="form-check font-size-16">
-                                            <input class="form-check-input" name="ids" type="checkbox" id="transactionCheck02" value="{{$row->id}}">
-                                            <label class="form-check-label" for="transactionCheck02"></label>
-                                        </div>
-                                    </td>
+                                <tr>
                                     <td>{{$loop->iteration}}</td>
                                     @if ($row->photo == NULL)
                                     <td><span class="badge rounded-pill bg-danger">Emtpy</span></td>
@@ -151,35 +138,6 @@
             )
         }
         })
-    });
-    $(function(e){
-        $("#chkCheckAll").click(function(){
-            $(".form-check-input").prop('checked',$(this).prop('checked'));
-        });
-
-        $('#deleteAllSelectedRecords').click(function(e){
-            e.preventDefault();
-            var allids = [];
-            $("input:checkbox[name=ids]:checked").each(function(){
-                allids.push($(this).val());
-                alert('oke')
-            });
-
-            $.ajax({
-                url: '{{route('users.deleteSelected')}}',
-                type: 'DELETE'
-                data: {
-                    ids: allids,
-                    _token:$("input[name=_token]").val()
-                },
-                success:function(response)
-                {
-                    $.each(allids,function(key,val){
-                        $('#sid'+val).remove();
-                    })
-                } 
-            });
-        });
     });
 </script>
 @endpush
