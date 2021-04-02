@@ -13,7 +13,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $data['users'] = User::all();
+        $data['users'] = User::paginate(3);
         return view('admin.users.index', $data);
     }
     public function create()
@@ -99,5 +99,12 @@ class UsersController extends Controller
         } else {
             return redirect()->back();
         }
+    }
+
+    public function deleteCheckedStudents(Request $request)
+    {
+        $ids = $request->ids;
+        User::whereIn('id', $ids)->delete();
+        return response()->json(['success' => "Students have been deleted!"]);
     }
 }

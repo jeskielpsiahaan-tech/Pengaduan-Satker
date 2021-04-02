@@ -56,12 +56,12 @@ class FrontendController extends Controller
     public function postlogin(Request $request)
     {
         $this->validate($request, [
-            'nik' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
-        $nik = $request->nik;
+        $username = $request->username;
         $pw = $request->password;
-        $society = Society::where('nik', $nik)->first();
+        $society = Society::where('username', $username)->first();
         if ($society != NULL) {
             if (Hash::check($pw, $society->password)) {
                 Session::put('society_id', $society->id);

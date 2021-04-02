@@ -77,8 +77,8 @@
                                         @csrf
                                         
                                         <div class="mb-3">
-                                            <label for="nik" class="form-label">NIK</label>
-                                            <input type="number" class="form-control" name="nik" id="nik" placeholder="Enter NIK">
+                                            <label for="username" class="form-label">Username</label>
+                                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="password">Password</label>
