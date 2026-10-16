@@ -46,9 +46,6 @@ class LoginController extends Controller
         $data = array($fieldType => $input['username'], 'password' => $input['password']);
         if (auth()->attempt($data)) {
             $username = auth()->user()->username;
-            $status = auth()->user()->status;
-            $ldate = date('Y-m-d H:i:s');
-            $user_id = Auth::user()->id;
             return redirect()->route('dashboard.index')->with(['success' => 'Welcome back ' . $username]);
         } else {
             return redirect()->back()->with(['error' => 'Invalid email or password']);

@@ -15,6 +15,6 @@ class Response extends Model
 
     public function Complaint()
     {
-        return $this->hasOne(Complaint::class, 'complaint_id', 'id');
+        return $this->belongsTo(Complaint::class, 'complaint_id', 'id');
     }
 }

@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Show Complaints | Public Complaints')
+@section('title','Pengaduan | HONAI 063')
 @section('css')
 <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
@@ -13,11 +13,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">Detail Complaints</h4>
+                    <h4 class="mb-sm-0 font-size-18">Detail Pengaduan</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item active">Detail Complaints</li>
+                            <li class="breadcrumb-item">Pengaduan</li>
+                            <li class="breadcrumb-item active">Detail</li>
                         </ol>
                     </div>
                 </div>
@@ -32,7 +33,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-        <br>
+        <div class="mb-3">
+            <a href="{{url('admin/complaints')}}" class="btn btn-secondary btn-sm">
+                <i class="mdi mdi-arrow-left me-1"></i> Kembali
+            </a>
+        </div>
         <div class="row">
             <form action="#" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -41,7 +46,13 @@
                         <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Detail Complaint</h4>
+                                    <h4 class="card-title">Detail Pengaduan
+                                        @if($complaint->tipe_pengadu == 'satker')
+                                            <span class="badge bg-info ms-2">Satker</span>
+                                        @else
+                                            <span class="badge bg-secondary ms-2">Non-Satker</span>
+                                        @endif
+                                    </h4>
                                         
         
                                         <div class="table-responsive">
@@ -49,49 +60,100 @@
                                                 <br>
                                                 <tbody>
                                                 <tr>
-                                                    <td>Nama</td>
+                                                    <td>Judul</td>
+                                                    <td>{{$complaint->judul ?? '-'}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kategori</td>
+                                                    <td>{{$complaint->kategori ?? '-'}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tipe Pengadu</td>
                                                     <td>
-                                                        <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$complaint->Society->name}}</a>
+                                                        @if($complaint->tipe_pengadu == 'satker')
+                                                            <span class="badge bg-info">Satker</span>
+                                                        @else
+                                                            <span class="badge bg-secondary">Non-Satker</span>
+                                                        @endif
                                                     </td>
+                                                </tr>
+                                                @if($complaint->tipe_pengadu == 'satker' && $complaint->Satker)
+                                                <tr>
+                                                    <td>Nama Satker</td>
+                                                    <td>{{$complaint->Satker->nama_satker}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kode Satker</td>
+                                                    <td>{{$complaint->nik}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nama Pelapor</td>
+                                                    <td>{{$complaint->Satker->nama_pelapor}}</td>
+                                                </tr>
+                                                @if($complaint->Satker->jabatan_pelapor)
+                                                <tr>
+                                                    <td>Jabatan Pelapor</td>
+                                                    <td>{{$complaint->Satker->jabatan_pelapor}}</td>
+                                                </tr>
+                                                @endif
+                                                <tr>
+                                                    <td>Nomor Telepon</td>
+                                                    <td>{{$complaint->Satker->phone_number ?? '-'}}</td>
+                                                </tr>
+                                                @else
+                                                <tr>
+                                                    <td>Nama</td>
+                                                    <td>{{$complaint->Society->name ?? '-'}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>NIK</td>
-                                                    <td>
-                                                        <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$complaint->nik}}</a>
-                                                    </td>
+                                                    <td>{{$complaint->nik}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Phone Number</td>
-                                                    <td>
-                                                        <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$complaint->Society->phone_number}}</a>
-                                                    </td>
+                                                    <td>Nomor Telepon</td>
+                                                    <td>{{$complaint->Society->phone_number ?? '-'}}</td>
                                                 </tr>
+                                                @endif
                                                 <tr>
-                                                    <td>Date</td>
+                                                    <td>Tanggal</td>
                                                     <td>
-                                                        <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{date('d F Y H:i:s',strtotime($complaint->created_at))}}</a>
+                                                        <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{date('d F Y ',strtotime($complaint->created_at))}}</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Status</td>
                                                     <td>
                                                         @if ($complaint->status == '0')
-                                                            <span class="badge rounded-pill bg-danger">Belum Di Proses</span>
+                                                            <span class="badge rounded-pill bg-danger">Belum DiProses</span>
                                                         @elseif($complaint->status == "process")
-                                                            <span class="badge rounded-pill bg-primary">Sedang Di Proses</span>
+                                                            <span class="badge rounded-pill bg-primary">Proses</span>
                                                         @else
-                                                            <span class="badge rounded-pill bg-success">Finished</span>
+                                                            <span class="badge rounded-pill bg-success">Selesai</span>
                                                         @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Photo</td>
+                                                    <td>Bukti/Lampiran</td>
                                                     <td>
-                                                        <img src="{{url('avatar_complaint/',$complaint->photo)}}" width="500px">
+                                                        @if($complaint->photo)
+                                                            @php
+                                                                $ext = strtolower(pathinfo($complaint->photo, PATHINFO_EXTENSION));
+                                                                $isImage = in_array($ext, ['jpg','jpeg','png','gif','webp','bmp']);
+                                                            @endphp
+                                                            @if($isImage)
+                                                                <img src="{{url('avatar_complaint/'.$complaint->photo)}}" style="max-width:500px; max-height:400px;" class="img-fluid rounded">
+                                                                <br>
+                                                            @endif
+                                                            <a href="{{url('avatar_complaint/'.$complaint->photo)}}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">
+                                                                <i class="mdi mdi-download me-1"></i> Unduh / Lihat Lampiran
+                                                            </a>
+                                                        @else
+                                                            <span class="text-muted">Tidak ada lampiran</span>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Content Of The Report</td>
+                                                    <td>Isi Pengaduan</td>
                                                     <td>
                                                         <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$complaint->contents_of_the_report}}</a>
                                                     </td>
@@ -99,17 +161,30 @@
                                                 <tr>
                                                     <td>Respon</td>
                                                     <td>
-                                                        @if (empty($response->response))
-                                                            <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">Not response yet</a>
+                                                        @if(empty($response->response))
+                                                            <span class="text-muted fst-italic">Belum ada respon</span>
                                                         @else
-                                                            <a href="javascript::void(0)" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">{{$response->response}}</a>
+                                                            {{$response->response}}
+                                                            @if(!empty($response->file_balasan))
+                                                            <div class="mt-2">
+                                                                @php $extB = strtolower(pathinfo($response->file_balasan, PATHINFO_EXTENSION)); @endphp
+                                                                @if(in_array($extB, ['jpg','jpeg','png','gif','webp','bmp']))
+                                                                    <img src="{{url('balasan/'.$response->file_balasan)}}" class="img-fluid rounded" style="max-height:200px;"><br>
+                                                                @endif
+                                                                <a href="{{url('balasan/'.$response->file_balasan)}}" target="_blank" class="btn btn-sm btn-outline-primary mt-1">
+                                                                    <i class="mdi mdi-download me-1"></i> Unduh File Balasan
+                                                                </a>
+                                                            </div>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td></td>
                                                     <td>
-                                                        <a href="{{url('admin/complaints/show',$complaint->id)}}" class="btn btn-info">Give feedback</a>
+                                                        <a href="{{url('admin/complaints/show',$complaint->id)}}" class="btn btn-primary btn-sm">
+                                                            <i class="mdi mdi-reply me-1"></i> Berikan Balasan
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 
@@ -142,61 +217,4 @@
 <script src="{{asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/js/pages/datatables.init.js')}}"></script>  
 <script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script> 
-<script>
-    $('.btn-delete').click(function(){
-        var society_id = $(this).attr('society-id');
-        const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success mt-2',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-        })
-
-        swalWithBootstrapButtons.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: !0,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        confirmButtonClass:"btn btn-success mt-2",
-        cancelButtonClass:"btn btn-danger ms-2 mt-2",
-        buttonsStyling:!1}).then((result) => {
-        if (result.isConfirmed) {
-            window.location = "{{url('admin/society/delete')}}/"+society_id+"";
-        } else if (
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your imaginary file is safe :)',
-            'error'
-            )
-        }
-        })
-    });
-    $(document).ready(function() {
-        $(document).on('click', '#set_dtl', function() {
-            var username = $(this).data('username');
-            var name = $(this).data('name');
-            var email = $(this).data('email');
-            var privilege = $(this).data('privilege');
-            var outlet = $(this).data('outlet');
-            var status = $(this).data('status');
-            var photo = $(this).data('photo');
-            var created = $(this).data('created');
-            var updated = $(this).data('updated');
-            $('#username').text(username);
-            $('#name').text(name);
-            $('#email').text(email);
-            $('#privilege').text(privilege);
-            $('#outlet').text(outlet);
-            $('#created').text(created);
-            $('#updated').text(updated);
-            $('#img-data').attr('src', "{{asset('avatar/')}}/"+photo);
-
-        })
-    })
-</script>
 @endpush

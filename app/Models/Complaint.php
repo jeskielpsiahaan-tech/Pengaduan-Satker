@@ -18,6 +18,11 @@ class Complaint extends Model
         return $this->belongsTo(Society::class, 'society_id', 'id');
     }
 
+    public function Satker()
+    {
+        return $this->belongsTo(Satker::class, 'satker_id', 'id');
+    }
+
     public function Response()
     {
         return $this->hasOne(Response::class, 'complaint_id', 'id');

@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Society | Public Complaints')
+@section('title','Masyarakat | HONAI 063')
 @section('css')
 
 @endsection
@@ -10,11 +10,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">Edit Society</h4>
+                    <h4 class="mb-sm-0 font-size-18">Edit Masyarakat</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item active">Edit Society</li>
+                            <li class="breadcrumb-item active">Edit Masyarakat</li>
                         </ol>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-12">
                 
-                <a href="{{route('society.index')}}" class="button"><i class="bx bx-arrow-back label-icon"></i> &nbsp;&nbsp;Back To List User</a>
+                <a href="{{route('society.index')}}" class="button"><i class="bx bx-arrow-back label-icon"></i> &nbsp;&nbsp;Kembali Ke Daftar Masyarakat</a>
                 <br>
                 <br>
                 @if ($errors->any())
@@ -67,35 +67,41 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="name" class="col-md-2 col-form-label">Name</label>
+                                        <label for="email" class="col-md-2 col-form-label">Email</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" id="email" name="email" value="{{$society->email}}">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="name" class="col-md-2 col-form-label">Nama</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="name" name="name" value="{{$society->name}}">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="phone_number" class="col-md-2 col-form-label">Phone Number</label>
+                                        <label for="phone_number" class="col-md-2 col-form-label">Telepon</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" id="phone_number" name="phone_number" value="{{$society->phone_number}}">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="address" class="col-md-2 col-form-label">Address</label>
+                                        <label for="address" class="col-md-2 col-form-label">Alamat</label>
                                         <div class="col-md-10">
                                             <textarea class="form-control" id="address" name="address">{{$society->address}}</textarea>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="photo" class="col-md-2 col-form-label">Photo</label>
+                                        <label for="photo" class="col-md-2 col-form-label">Foto</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="file" id="photo" name="photo">
-                                            <small><span>(Leave blank if you don't want to change the photo)</span></small>
+                                            <small><span>(Lewati Jika Tidak Diubah)</span></small>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="password" class="col-md-2 col-form-label">Password</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="password" id="password" name="password">
-                                            <small><span>(Leave blank if you don't want to change the password)</span></small>
+                                            <small><span>(Lewati Jika Tidak Diubah)</span></small>
                                         </div>
                                     </div>
 

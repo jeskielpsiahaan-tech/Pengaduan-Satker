@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Dashboard | Public Complaints')
+@section('title','Dashboard | HONAI 063')
 @section('content')
 <div class="page-content">
     <div class="container-fluid">
@@ -31,8 +31,8 @@
                         <div class="row">
                             <div class="col-7">
                                 <div class="text-primary p-3">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p>Public Complaints</p>
+                                    <h5 class="text-primary">Selamat Datang!</h5>
+                                    <p>HONAI 063 - Panel Admin</p>
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
@@ -69,17 +69,17 @@
             </div>
             <div class="col-xl-8">
                 <div class="row">
+
                     <div class="col-md-4">
                         <div class="card mini-stats-wid">
                             <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <p class="text-muted fw-medium">Complaints</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium mb-1">Pengaduan</p>
                                         <h4 class="mb-0">{{$complaints}}</h4>
                                     </div>
-
-                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
-                                        <span class="avatar-title">
+                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary ms-3">
+                                        <span class="avatar-title rounded-circle bg-primary">
                                             <i class="bx bx-copy-alt font-size-24"></i>
                                         </span>
                                     </div>
@@ -87,17 +87,17 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="card mini-stats-wid">
                             <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <p class="text-muted fw-medium">Unprocessed</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium mb-1">Belum Diproses</p>
                                         <h4 class="mb-0">{{$unprocessed}}</h4>
                                     </div>
-
-                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
-                                        <span class="avatar-title rounded-circle bg-primary">
+                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-danger ms-3">
+                                        <span class="avatar-title rounded-circle bg-danger">
                                             <i class="bx bx-archive-in font-size-24"></i>
                                         </span>
                                     </div>
@@ -105,17 +105,17 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="card mini-stats-wid">
                             <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <p class="text-muted fw-medium">Process</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium mb-1">Proses</p>
                                         <h4 class="mb-0">{{$process}}</h4>
                                     </div>
-
-                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
-                                        <span class="avatar-title rounded-circle bg-primary">
+                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-warning ms-3">
+                                        <span class="avatar-title rounded-circle bg-warning">
                                             <i class="bx bx-purchase-tag-alt font-size-24"></i>
                                         </span>
                                     </div>
@@ -123,61 +123,99 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="card mini-stats-wid">
                             <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <p class="text-muted fw-medium">Finished</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium mb-1">Selesai</p>
                                         <h4 class="mb-0">{{$finished}}</h4>
                                     </div>
-
-                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
-                                        <span class="avatar-title rounded-circle bg-primary">
-                                            <i class="bx bx-cart font-size-24"></i>
+                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-success ms-3">
+                                        <span class="avatar-title rounded-circle bg-success">
+                                            <i class="bx bx-check-circle font-size-24"></i>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="card mini-stats-wid">
                             <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <p class="text-muted fw-medium">Users</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium mb-1">User</p>
                                         <h4 class="mb-0">{{$users}}</h4>
                                     </div>
-
-                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
-                                        <span class="avatar-title rounded-circle bg-primary">
-                                            <i class="bx bx-user-voice font-size-24"></i>
+                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-info ms-3">
+                                        <span class="avatar-title rounded-circle bg-info">
+                                            <i class="bx bx-user font-size-24"></i>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="card mini-stats-wid">
                             <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <p class="text-muted fw-medium">Society</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium mb-1">Non-Satker</p>
                                         <h4 class="mb-0">{{$society}}</h4>
                                     </div>
-
-                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary ms-3">
                                         <span class="avatar-title rounded-circle bg-primary">
-                                            <i class="bx bx-user-voice font-size-24"></i>
+                                            <i class="bx bxs-user-badge font-size-24"></i>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
+                    <div class="col-md-4">
+                        <div class="card mini-stats-wid">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium mb-1">Satker</p>
+                                        <h4 class="mb-0">{{$satker ?? 0}}</h4>
+                                    </div>
+                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-secondary ms-3">
+                                        <span class="avatar-title rounded-circle bg-secondary">
+                                            <i class="bx bxs-buildings font-size-24"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <a href="{{route('admin.feedback.index')}}" style="text-decoration:none;">
+                            <div class="card mini-stats-wid">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <p class="text-muted fw-medium mb-1">Masukan & Kritik</p>
+                                            <h4 class="mb-0">{{$feedback ?? 0}}</h4>
+                                        </div>
+                                        <div class="mini-stat-icon avatar-sm rounded-circle bg-warning ms-3">
+                                            <span class="avatar-title rounded-circle bg-warning">
+                                                <i class="bx bx-message-edit font-size-24"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
             </div>
 
@@ -187,7 +225,7 @@
                 <div class="card">
                     
                     <div class="card-body">
-                        <h4 class="card-title">Annual Complaint Graph</h4>
+                        <h4 class="card-title">Grafik Pengaduan</h4>
                         <div class="embed-responsive embed-responsive-16by9">
                             <canvas class="embed-responsive-item" id="myChartt"></canvas>
                           </div>
@@ -200,10 +238,12 @@
     </div>
 </div>
 <?php
+$th = [];
+$complaint1 = [];
 foreach ($tahun as $row) {
     $th[] = $row->Tahun;
     $complaint1[] = $row->pay_total;
-    }    
+}
 ?>
 
 @endsection
@@ -225,7 +265,7 @@ foreach ($tahun as $row) {
 
           labels: <?php echo json_encode($th)?>,
           datasets: [{
-              label: 'Total Complaint',
+              label: 'Total Pengaduan',
               data: <?php echo json_encode($complaint1)?>,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',

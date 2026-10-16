@@ -14,11 +14,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">Complaint History</h4>
+                    <h4 class="mb-sm-0 font-size-18" style="color:#fff;">Riwayat Pengaduan</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item active">Complaint History</li>
+                            <li class="breadcrumb-item active" style="color:#fff;">Riwayat Pengaduan</li>
                         </ol>
                     </div>
 
@@ -36,8 +36,9 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Photo</th>
-                                <th>Date Complaints</th>
+                                <th>Judul</th>
+                                <th>Kategori</th>
+                                <th>Tanggal Pengaduan</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -48,14 +49,15 @@
                                 @foreach ($complaint as $row)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td><img src="{{url('avatar_complaint/',$row->photo)}}" width="120px"></td>
-                                    <td>{{date('d F Y H:i:s',strtotime($row->created_at))}}</td>
+                                    <td>{{$row->judul ?? '-'}}</td>
+                                    <td>{{$row->kategori ?? '-'}}</td>
+                                    <td>{{date('d F Y',strtotime($row->created_at))}}</td>
                                     @if ($row->status == '0')
-                                        <td><span class="badge rounded-pill bg-danger">Unprocess</span></td>
+                                        <td><span class="badge rounded-pill bg-danger">Belum Diproses</span></td>
                                     @elseif($row->status == "process")
-                                        <td><span class="badge rounded-pill bg-primary">Process</span></td>
+                                        <td><span class="badge rounded-pill bg-primary">Proses</span></td>
                                     @else 
-                                        <td><span class="badge rounded-pill bg-success">Finished</span></td>
+                                        <td><span class="badge rounded-pill bg-success">Selesai</span></td>
                                     @endif
                                     <td>
                                         <a href="{{url('user/complaint/detail/'.$row->id)}}" class="btn btn-info">

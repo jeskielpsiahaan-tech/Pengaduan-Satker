@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Report Day | Laundry Application')
+@section('title','Laporan Harian')
 @section('css')
 <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
@@ -13,11 +13,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">Report Day</h4>
+                    <h4 class="mb-sm-0 font-size-18">Laporan Harian</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item active">Report Day</li>
+                            <li class="breadcrumb-item active">Laporan Harian</li>
                         </ol>
                     </div>
                 </div>
@@ -42,13 +42,13 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3 row">
-                                        <label for="price" class="col-md-2 col-form-label">From Date</label>
+                                        <label for="price" class="col-md-2 col-form-label">Dari Tanggal</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="date" id="date1" name="date1" value="">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="price" class="col-md-2 col-form-label">For Date</label>
+                                        <label for="price" class="col-md-2 col-form-label">Sampai Tanggal</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="date" id="date2" name="date2" value="">
                                         </div>
@@ -56,7 +56,7 @@
                                     <div class="mb-3 row">
                                         <label for="price" class="col-md-2 col-form-label"></label>
                                         <div class="col-md-10">
-                                            <button class="btn btn-success" type="submit"> Search</button> 
+                                            <button class="btn btn-success" type="submit"> Cari</button> 
                                             <a href="{{url('admin/report/day/cetakpdf/?date1='.Request::get('date1').'&date2='.Request::get('date2'))}}" class="btn btn-warning" target="_blank">Export PDF</a>
                                         </div>
                                     </div>
@@ -77,8 +77,13 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>NIK</th>
-                                <th>Date</th>
+                                <th>Tipe</th>
+                                <th>Nama / Instansi</th>
+                                <th>NIK / Kode</th>
+                                <th>Judul</th>
+                                <th>Isi Pengaduan</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
                             </tr>
                             </thead>
 
@@ -87,8 +92,32 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$item->nik}}</td>
+                                        <td>
+                                            @if(isset($item->tipe_pengadu) && $item->tipe_pengadu == 'satker')
+                                                <span class="badge bg-info">Satker</span>
+                                            @else
+                                                <span class="badge bg-secondary">Non-Satker</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if(isset($item->tipe_pengadu) && $item->tipe_pengadu == 'satker')
+                                                <strong>{{$item->Satker->nama_satker ?? '-'}}</strong><br>
+                                                <small class="text-muted">{{$item->Satker->nama_pelapor ?? ''}}</small>
+                                            @else
+                                                {{$item->Society->name ?? '-'}}
+                                            @endif
+                                        </td>
+                                        <td>{{$item->nik ?? '-'}}</td>
+                                        <td>{{$item->judul ?? '-'}}</td>
+                                        <td>{{$item->contents_of_the_report}}</td>
                                         <td>{{$item->date_complaint}}</td>
+                                        @if ($item->status == "0")
+                                        <td><span class="badge rounded-pill bg-danger">Belum Diproses</span></td>
+                                        @elseif($item->status == 'process')
+                                        <td><span class="badge rounded-pill bg-primary">Proses</span></td>
+                                        @else 
+                                        <td><span class="badge rounded-pill bg-success">Selesai</span></td>
+                                        @endif
                                     </tr>
                                 @endforeach    
                             </tbody>

@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Society | Public Complaints')
+@section('title','Non-Satker | HONAI 063')
 @section('css')
 <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
@@ -13,11 +13,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">Society</h4>
+                    <h4 class="mb-sm-0 font-size-18">Non-Satker</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item active">Society</li>
+                            <li class="breadcrumb-item active">Non-Satker</li>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <a href="{{route('society.create')}}" class="btn btn-success waves-effect waves-light"> Add</a>
+                <a href="{{route('society.create')}}" class="btn btn-success waves-effect waves-light"> Tambah</a>
             </div>
         </div>
         <br>
@@ -48,12 +48,14 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Photo</th>
+                                <th>Foto</th>
+                                <th>Nama</th>
                                 <th>NIK</th>
                                 <th>Username</th>
-                                <th>Phone Number</th>
-                                <th>Address</th>
-                                <th>Action</th>
+                                <th>Email</th>
+                                <th>Telepon</th>
+                                <th>Alamat</th>
+                                <th>Aksi</th>
                             </tr>
                             </thead>
 
@@ -67,8 +69,10 @@
                                     @else
                                     <td><img class="rounded-circle avatar-xs" src="{{ url('/avatar_society/'.$row->photo) }}"></td>
                                     @endif
+                                    <td>{{$row->name ?? '-'}}</td>
                                     <td>{{$row->nik}}</td>
                                     <td>{{$row->username}}</td>
+                                    <td>{{$row->email}}</td>
                                     <td>{{$row->phone_number}}</td>
                                     <td>{{$row->address}}</td>
                                     <td>

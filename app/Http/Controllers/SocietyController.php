@@ -26,6 +26,7 @@ class SocietyController extends Controller
         $this->validate($request, [
             'nik' => 'required|min:2|max:20',
             'username' => 'required|min:2|max:20',
+            'email' => 'required|min:2',
             'name' => 'required|min:2|max:20',
             'password' => 'required|min:5|max:20',
             'phone_number' => 'required',
@@ -35,6 +36,7 @@ class SocietyController extends Controller
         $society = new Society;
         $society->nik = $request->nik;
         $society->username = $request->username;
+        $society->email = $request->email;
         $society->name = $request->name;
         $society->phone_number = $request->phone_number;
         $society->address = $request->address;
@@ -68,7 +70,8 @@ class SocietyController extends Controller
     {
         $this->validate($request, [
             'nik' => 'required|min:2|max:20',
-            'username' => 'required|min:2|max:20',
+            'username' => 'required|min:2',
+            'email' => 'required|min:2|max:20',
             'name' => 'required|min:2|max:20',
             'phone_number' => 'required',
             'address' => 'required',
@@ -76,6 +79,7 @@ class SocietyController extends Controller
         $society = Society::findOrFail($id);
         $society->nik = $request->nik;
         $society->username = $request->username;
+        $society->email = $request->email;
         $society->name = $request->name;
         $society->phone_number = $request->phone_number;
         $society->address = $request->address;

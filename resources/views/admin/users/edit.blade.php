@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title','Management User | Public Complaints')
+@section('title','Management User | HONAI 063')
 @section('css')
 
 @endsection
@@ -10,11 +10,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">Edit Users</h4>
+                    <h4 class="mb-sm-0 font-size-18">Edit User</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item active">Edit Users</li>
+                            <li class="breadcrumb-item active">Edit User</li>
                         </ol>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-12">
                 
-                <a href="{{route('users.index')}}" class="button"><i class="bx bx-arrow-back label-icon"></i> &nbsp;&nbsp;Back To List User</a>
+                <a href="{{route('users.index')}}" class="button"><i class="bx bx-arrow-back label-icon"></i> &nbsp;&nbsp;Kembali Ke Daftar User</a>
                 <br>
                 <br>
                 @if ($errors->any())
@@ -55,7 +55,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3 row">
-                                        <label for="officer_name" class="col-md-2 col-form-label">Officer Name</label>
+                                        <label for="officer_name" class="col-md-2 col-form-label">Nama</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="officer_name" name="officer_name" value="{{$user->officer_name}}">
                                         </div>
@@ -73,23 +73,23 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="phone_number" class="col-md-2 col-form-label">Phone Number</label>
+                                        <label for="phone_number" class="col-md-2 col-form-label">Nomor Telepon</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" id="phone_number" name="phone_number" value="{{$user->phone_number}}">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="photo" class="col-md-2 col-form-label">Photo</label>
+                                        <label for="photo" class="col-md-2 col-form-label">Foto</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="file" id="photo" name="photo">
-                                            <small><span>(Leave blank if you don't want to change the photo)</span></small>
+                                            <small><span>(Lewati Jika Tidak Diubah)</span></small>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="level_id" class="col-md-2 col-form-label">Privilege</label>
+                                        <label for="level_id" class="col-md-2 col-form-label">Level User</label>
                                         <div class="col-md-10">
                                             <select class="form-select select2" id="level_id" name="level_id">
-                                                <option disabled selected>--Select--</option>
+                                                <option disabled selected>--Pilih--</option>
                                                 @foreach ($level as $row)
                                                 <option @if($row->id==$user->level_id) selected @endif value="{{ $row->id}}">{{$row->name }}</option>
                                                 @endforeach
@@ -100,7 +100,7 @@
                                         <label for="password" class="col-md-2 col-form-label">Password</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="password" id="password" name="password">
-                                            <small><span>(Leave blank if you don't want to change the password)</span></small>
+                                            <small><span>(Lewati Jika Tidak Diubah)</span></small>
                                         </div>
                                     </div>
 
